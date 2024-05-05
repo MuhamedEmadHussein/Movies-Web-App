@@ -6,6 +6,8 @@
     @vite('resources/css/app.css')
     <title>Movies App</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     @livewireStyles
 </head>
 <body class="font-sans bg-gray-900 text-white">
@@ -23,7 +25,7 @@
                     </a>
                 </li>
                 <li class="md:ml-6 mt-3 md:mt-0">
-                    <a href="#" class="hover:text-gray-300">
+                    <a href="{{route('tv.index')}}" class="hover:text-gray-300">
                         TV Shows
                     </a>
                 </li>
@@ -46,5 +48,7 @@
     @yield('content')
 
     @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
 </body>
 </html>

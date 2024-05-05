@@ -2,6 +2,31 @@
 
 @section('content')
 <div class="movies-info border-b border-gray-800">
+    @if (count($movie['videos']['results']) > 0)
+        <!-- Modal for YouTube video -->
+        <div x-data="{ isOpen: false }">
+            <!-- Modal Overlay -->
+            <div x-show="isOpen" class="fixed inset-0 bg-black opacity-75"></div>
+
+            <!-- Modal Body -->
+            <div x-show="isOpen" class="fixed inset-0 flex items-center justify-center">
+                <div class="bg-white rounded-lg p-8 w-full sm:w-1/2 md:w-2/3 lg:w-1/2">
+                    <!-- YouTube Video -->
+                    <div class="relative" style="padding-top: 56.25%;" @click.away="isOpen = false">
+                        <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/{{$movie['videos']['results'][0]['key']}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons to open modal -->
+            <div class="flex justify-end mr-5 mt-4">
+                <button @click="isOpen = true" class="inline-flex items-center bg-orange-500 text-gray-900 rounded font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
+                    <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    <span class="ml-2">Play Trailer Here</span>
+                </button>
+            </div>
+        </div>
+    @endif
     <div class="container mx-auto px-4 py-16 flex flex-col md:flex-row">
         <img src="{{$movie['poster_path']}}" alt="parasite" class="w-64 md:w-96">
         <div class="md:ml-24">
@@ -39,7 +64,7 @@
                     <a href="https://youtube.com/watch?v={{$movie['videos']['results'][0]['key']}}" class="inline-flex items-center bg-orange-500 text-gray-900 rounded
                     font-semibold px-5 py-4 hover:bg-orange-600 transition ease-in-out duration-150">
                         <svg class="w-6 fill-current" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        <span class="ml-2">Play Trailer</span>
+                        <span class="ml-2">Play Trailer On Youtube</span>
                     </a>
                 </div>
             @endif

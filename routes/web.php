@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,5 @@ Route::view('/','show');
 Route::get('/', [MoviesController::class, 'index'])->name('movies.index');
 Route::get('/movies/{movie}', [MoviesController::class, 'show'])->name('movies.show');
 Route::resource('/actors',ActorsController::class);
+Route::resource('/tv',TvController::class);
 Route::get('/actors/page/{page?}', [ActorsController::class, 'index']);
