@@ -71,11 +71,20 @@
         <h2 class="text-4xl font-semibold">Credits</h2>
         <ul class="list-disc leading-loose pl-5 mt-8">
             @foreach ($credits as $credit)
-                <li>
-                    {{ $credit['release_year'] }} &middot;
-                    <strong><a href="#" class="hover:underline">{{ $credit['title'] }}</a></strong>
-                     as {{ $credit['character'] }}
-                 </li>
+
+                @if (!empty($credit['character']))
+                    <li>
+                        {{ $credit['release_year'] }} &middot;
+                        <strong><a href="#" class="hover:underline">{{ $credit['title'] }}</a></strong>
+                            as {{ $credit['character'] }}
+                    </li>
+                @else
+                    <li>
+                        {{ $credit['release_year'] }} &middot;
+                        <strong><a href="#" class="hover:underline">{{ $credit['title'] }}</a></strong>
+                    </li>
+                @endif
+
             @endforeach
 
         </ul>

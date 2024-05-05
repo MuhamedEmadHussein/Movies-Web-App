@@ -92,6 +92,6 @@ class ActorViewModel extends ViewModel
             ])->only([
                 'release_date', 'release_year', 'title', 'character', 'linkToPage',
             ]);
-        })->sortByDesc('release_date');
+        })->sortByDesc('release_year')->dump();
     }
 }
