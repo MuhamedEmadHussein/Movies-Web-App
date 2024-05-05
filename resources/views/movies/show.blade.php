@@ -52,17 +52,15 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             @foreach ($movie['casts'] as $cast)
                 <div class="mt-8">
-                    <a href="#">
+                    <a href="{{route('actors.show',$cast['id'])}}">
                         @if(isset($cast['profile_path']) && $cast['profile_path'] !== null)
-                            <img src="https://image.tmdb.org/t/p/w500{{$cast['profile_path']}}" alt="No Image" class="hover:opacity-75 transition ease-in-out duration-150">
+                            <img src="https://image.tmdb.org/t/p/w235_and_h235_face{{$cast['profile_path']}}" alt="No Image" class="hover:opacity-75 transition ease-in-out duration-150">
                         @else
-                            <div class="w-56 h-80 bg-gray-300 text-gray-600 flex items-center justify-center">
-                                No Image
-                            </div>
+                            <img src="https://ui-avatars.com/api/?size=235&name={{$cast['name']}}" alt="No Image" class="hover:opacity-75 transition ease-in-out duration-150">
                         @endif
                     </a>
                     <div class="mt-2">
-                        <a href="#" class="text-lg mt-2 hover:text-gray:300">{{ $cast['name'] }}</a>
+                        <a href="{{route('actors.show',$cast['id'])}}" class="text-lg mt-2 hover:text-gray:300">{{ $cast['name'] }}</a>
                         <div class="text-sm text-gray-400">
                             {{ $cast['character'] }}
                         </div>
